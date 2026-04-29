@@ -1,13 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 
-console.log("SUPABASE URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
-
 const supabase = createClient(
-process.env.NEXT_PUBLIC_SUPABASE_URL,
-process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+process.env.NEXT_PUBLIC_SUPABASE_URL!,
+process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-export async function POST(req) {
+export async function POST(req: Request) {
 const form = await req.formData();
 
 const email = form.get("email");
